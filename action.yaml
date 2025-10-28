@@ -20,8 +20,10 @@ runs:
 
     - name: Calculate SHA256
       id: sha256
-      run: echo "hex=$(sha256sum ${{ inputs.path }} | cut -d " " -f 1)" >> $GITHUB_OUTPUT
+      run: echo "hex=$(sha256sum "$input_path" | cut -d " " -f 1)" >> $GITHUB_OUTPUT
       shell: bash
+      env:
+        input_path: ${{ inputs.path }}
 
 branding:
   color: purple
